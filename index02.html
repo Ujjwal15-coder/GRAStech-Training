@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Position Layout</title>
+    <style>
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: sans-serif;
+        }
+
+        
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 100px;
+            width: 90%;
+            max-width: 1000px;
+            padding: 10px;
+        }
+
+        
+        .grey-pair {
+            display: flex;
+            gap: 20px;
+        }
+        .grey-box {
+            background-color: grey; 
+            border: 1px solid;
+            flex: 1;
+            height: 150px;
+            border-radius: 1px;
+        }
+
+        
+        .yellow-container {
+            background-color: #facc15;
+            border: 0px solid #ffffff;
+            height: 150px;
+            position: relative; 
+            border-radius: 1px;
+        }
+
+        
+        .blue-box {
+            background-color: #bae6fd; 
+            border: 2px solid white;
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            border-radius: 4px;
+        }
+
+        
+        .pos-left {
+            top: 30px;
+            left: 15px;
+        }
+
+        .pos-right {
+            top: 30px;
+            right: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="grey-pair">
+            <div class="grey-box"></div>
+            <div class="grey-box"></div>
+        </div>
+
+        <div class="yellow-container">
+            <div class="blue-box pos-left"></div>
+        </div>
+
+        <div class="yellow-container">
+            <div class="blue-box pos-right"></div>
+        </div>
+
+        <div class="grey-pair">
+            <div class="grey-box"></div>
+            <div class="grey-box"></div>
+        </div>
+    </div>
+
+</body>
+</html>

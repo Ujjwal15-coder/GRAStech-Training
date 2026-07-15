@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-areas: 
+                "header"
+                "menu"
+                "content"
+                "footer";
+            gap: 1rem;
+            padding: 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            grid-area: header;
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 2rem;
+            text-align: center;
+            border-radius: 8px;
+        }
+
+        .menu {
+            grid-area: menu;
+            background: #34495e;
+            padding: 1rem;
+            border-radius: 8px;
+        }
+
+        .menu ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .menu ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            display: block;
+            padding: 0.75rem;
+            border-radius: 4px;
+            transition: background 0.3s ease;
+        }
+
+        .menu ul li a:hover {
+            background: #1abc9c;
+        }
+
+        .content {
+            grid-area: content;
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .content p {
+            margin-bottom: 1rem;
+        }
+
+        .footer {
+            grid-area: footer;
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: auto;
+        }
+
+
+        @media (min-width: 900px) {
+            .grid-container {
+                grid-template-columns: 250px 1fr;
+                grid-template-areas: 
+                    "header header"
+                    "menu content"
+                    "footer footer";
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="grid-container">
+        <div class="header">
+            <h1>Ujjwal</h1>
+        </div>
+
+        <div class="menu">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+
+        <div class="content">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.</p>
+        </div>
+
+        <div class="footer">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.</p>
+        </div>
+    </div>
+</body>
+</html>

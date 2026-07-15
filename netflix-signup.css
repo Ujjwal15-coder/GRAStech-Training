@@ -1,0 +1,230 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+body {
+    background-color: #000;
+    color: #fff;
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Background setup for the full page */
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    /* You can replace the URL with an actual background image like the Netflix movie grid */
+    background-image: url('https://assets.nflxext.com/ffe/siteui/vlv3/ab180a27-b661-44d7-a6d9-940cb32f2f4a/97b60ec8-f94d-4be9-a1b7-789cf30113c2/US-en-20231009-popsignuptwoweeks-perspective_alpha_website_large.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.gradient-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    background-image: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0, rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 0.8) 100%);
+}
+
+/* Header */
+.header {
+    padding: 25px 3%;
+    position: relative;
+    z-index: 10;
+}
+
+.logo .netflix-logo {
+    height: 45px;
+    width: 167px;
+}
+
+/* Main Container */
+.signup-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+    z-index: 10;
+}
+
+/* Sign Up Box */
+.signup-box {
+    background-color: rgba(0, 0, 0, 0.75);
+    border-radius: 4px;
+    width: 100%;
+    max-width: 450px;
+    padding: 60px 68px 40px;
+    min-height: 600px;
+}
+
+.signup-box h1 {
+    color: #fff;
+    font-size: 32px;
+    font-weight: 500;
+    margin-bottom: 28px;
+}
+
+/* Form Styles */
+.input-group {
+    position: relative;
+    margin-bottom: 16px;
+}
+
+.input-group input {
+    width: 100%;
+    background: #333;
+    border: 0;
+    border-radius: 4px;
+    color: #fff;
+    padding: 24px 20px 8px;
+    font-size: 16px;
+    line-height: 1.5;
+    outline: none;
+    transition: background 0.2s ease;
+}
+
+.input-group input:focus {
+    background: #454545;
+}
+
+.input-group label {
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    transform: translateY(-50%);
+    color: #8c8c8c;
+    font-size: 15px;
+    transition: all 0.2s ease;
+    pointer-events: none;
+}
+
+.input-group input:focus ~ label,
+.input-group input:valid ~ label {
+    top: 14px;
+    font-size: 11px;
+}
+
+/* Sign Up Button */
+.signup-btn {
+    width: 100%;
+    padding: 16px;
+    background-color: #e50914;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    margin-top: 24px;
+    transition: background-color 0.2s ease;
+}
+
+.signup-btn:hover {
+    background-color: #c11119;
+}
+
+/* Form Help (Remember me & Need help) */
+.form-help {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 12px;
+    font-size: 13px;
+    color: #b3b3b3;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+}
+
+.remember-me input {
+    margin-right: 5px;
+    accent-color: #737373; /* Style checkbox loosely matching Netflix */
+    width: 16px;
+    height: 16px;
+}
+
+.need-help {
+    color: #b3b3b3;
+    text-decoration: none;
+}
+
+.need-help:hover {
+    text-decoration: underline;
+}
+
+/* Footer of the signup box */
+.signup-footer {
+    margin-top: 60px;
+}
+
+.already-have-account {
+    color: #737373;
+    font-size: 16px;
+    margin-bottom: 11px;
+}
+
+.already-have-account a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.already-have-account a:hover {
+    text-decoration: underline;
+}
+
+.recaptcha-terms {
+    color: #8c8c8c;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.recaptcha-terms a {
+    color: #0071eb;
+    text-decoration: none;
+}
+
+.recaptcha-terms a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 740px) {
+    .signup-box {
+        padding: 40px 5%;
+        min-height: auto;
+        background-color: transparent;
+    }
+    
+    .background {
+        background-image: none;
+        background-color: #000;
+    }
+
+    .gradient-overlay {
+        display: none;
+    }
+
+    .header {
+        padding: 20px 5%;
+        border-bottom: 1px solid #333;
+    }
+    
+    .logo .netflix-logo {
+        width: 120px;
+        height: 32px;
+    }
+}

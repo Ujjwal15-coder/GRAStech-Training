@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rotating Image</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #1a1a2e;
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .container {
+            perspective: 1000px; /* Gives 3D depth to the rotation */
+        }
+
+        .rotating-image {
+            width: 300px;
+            height: auto;
+            /* 5 seconds per rotation, linear speed, repeats infinitely */
+            animation: rotate-axis 5s linear infinite;
+            transform-style: preserve-3d;
+            filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.5));
+        }
+
+        @keyframes rotate-axis {
+            0% {
+                transform: rotateY(0deg);
+            }
+            100% {
+                transform: rotateY(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Using a football PNG for demonstration -->
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Soccerball.svg/500px-Soccerball.svg.png" alt="Rotating Football" class="rotating-image">
+    </div>
+</body>
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Auto / Manual Number Selector</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#111;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+}
+
+/* Top Controls */
+.controls{
+    margin-bottom:40px;
+}
+
+.controls label{
+    color:#fff;
+    font-size:20px;
+    margin-right:10px;
+}
+
+.controls select{
+    padding:10px 18px;
+    font-size:17px;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+/* Number Row */
+.numbers{
+    display:flex;
+    gap:18px;
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
+/* Circle Style */
+.numbers span{
+    width:70px;
+    height:70px;
+    border-radius:50%;
+    background:#222;
+    border:3px solid white;
+    color:white;
+    font-size:28px;
+    font-weight:bold;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    cursor:pointer;
+    filter:blur(7px);
+    opacity:.25;
+    transition:.35s;
+}
+
+/* Active Circle */
+.numbers span.active{
+    filter:blur(0);
+    opacity:1;
+    background:#00ff99;
+    color:#111;
+    border-color:#00ff99;
+    transform:scale(1.15);
+    box-shadow:
+        0 0 20px #00ff99,
+        0 0 40px #00ff99,
+        0 0 60px #00ff99;
+}
+
+/* Manual Mode Hover */
+.manual .numbers span:hover{
+    filter:blur(0);
+    opacity:1;
+    background:#00ff99;
+    color:#111;
+    border-color:#00ff99;
+    transform:scale(1.15);
+    box-shadow:
+        0 0 20px #00ff99,
+        0 0 40px #00ff99,
+        0 0 60px #00ff99;
+}
+
+.manual .numbers:hover span:not(:hover){
+    filter:blur(6px);
+    opacity:.25;
+}
+</style>
+
+</head>
+<body>
+
+<div class="controls">
+<label>Mode :</label>
+
+<select id="mode">
+<option value="auto">Auto Mode</option>
+<option value="manual">Manual Mode</option>
+</select>
+
+</div>
+
+<div class="numbers">
+
+<span>1</span>
+<span>2</span>
+<span>3</span>
+<span>4</span>
+<span>5</span>
+<span>6</span>
+<span>7</span>
+<span>8</span>
+<span>9</span>
+
+</div>
+
+<script>
+
+const mode=document.getElementById("mode");
+const numbers=document.querySelectorAll(".numbers span");
+
+let index=0;
+let timer;
+
+/* AUTO MODE */
+
+function startAuto(){
+
+clearInterval(timer);
+
+timer=setInterval(()=>{
+
+numbers.forEach(n=>n.classList.remove("active"));
+
+numbers[index].classList.add("active");
+
+index++;
+
+if(index>=numbers.length){
+
+index=0;
+
+}
+
+},1000);
+
+}
+
+startAuto();
+
+/* MODE CHANGE */
+
+mode.addEventListener("change",()=>{
+
+if(mode.value==="auto"){
+
+document.body.classList.remove("manual");
+
+startAuto();
+
+}
+else{
+
+clearInterval(timer);
+
+numbers.forEach(n=>n.classList.remove("active"));
+
+document.body.classList.add("manual");
+
+}
+
+});
+
+</script>
+
+</body>
+</html>

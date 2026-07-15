@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Weather Forecast</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Poppins, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            background: linear-gradient(-45deg, #0f2027, #203a43, #2c5364, #1b2735);
+            background-size: 400% 400%;
+            animation: bg 12s ease infinite;
+            overflow-x: hidden;
+            transition: .4s;
+        }
+
+        @keyframes bg {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .container {
+            width: min(92%, 450px);
+            background: rgba(255, 255, 255, .12);
+            backdrop-filter: blur(20px);
+            padding: 22px;
+            border-radius: 20px;
+            box-shadow: 0 12px 32px rgba(0, 0, 0, .3);
+            color: white;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 14px;
+        }
+
+        .header h1 {
+            font-size: 22px;
+        }
+
+        .toggle {
+            cursor: pointer;
+            font-size: 20px;
+        }
+
+        .search {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 18px;
+        }
+
+        .search input {
+            flex: 1;
+            padding: 10px 14px;
+            border: none;
+            border-radius: 10px;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .search button {
+            padding: 10px 18px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 14px;
+            background: #00b4db;
+            color: white;
+            font-weight: bold;
+            transition: .3s;
+        }
+
+        .search button:hover {
+            transform: scale(1.05);
+            background: #0083b0;
+        }
+
+        .weather {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .left h2 {
+            font-size: 24px;
+        }
+
+        .temp {
+            font-size: 48px;
+            font-weight: bold;
+        }
+
+        .icon {
+            font-size: 60px;
+            animation: float 3s infinite;
+        }
+
+        @keyframes float {
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .details {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, .15);
+            padding: 14px;
+            border-radius: 12px;
+            text-align: center;
+            transition: .3s;
+            font-size: 14px;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            background: rgba(255, 255, 255, .25);
+        }
+
+        .forecast {
+            margin-top: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+            gap: 10px;
+        }
+
+        .day {
+            background: rgba(255, 255, 255, .12);
+            padding: 10px;
+            border-radius: 12px;
+            text-align: center;
+            transition: .3s;
+            font-size: 13px;
+        }
+
+        .day:hover {
+            transform: scale(1.08);
+        }
+
+        .light {
+            background: linear-gradient(120deg, #89f7fe, #66a6ff);
+            color: #111;
+        }
+
+        .light .container {
+            background: rgba(255, 255, 255, .5);
+            color: #111;
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width:768px) {
+
+            .container {
+                width: 95%;
+                padding: 18px;
+            }
+
+            .header {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+
+            .search {
+                flex-direction: column;
+            }
+
+            .search input,
+            .search button {
+                width: 100%;
+            }
+
+            .weather {
+                flex-direction: column;
+                text-align: center;
+                gap: 14px;
+            }
+
+            .left h2 {
+                font-size: 20px;
+            }
+
+            .temp {
+                font-size: 40px;
+            }
+
+            .icon {
+                font-size: 50px;
+            }
+
+            .details {
+                grid-template-columns: 1fr;
+            }
+
+            .forecast {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+        }
+
+        @media (max-width:480px) {
+
+            body {
+                padding: 10px;
+            }
+
+            .container {
+                padding: 14px;
+                border-radius: 14px;
+            }
+
+            .header h1 {
+                font-size: 18px;
+            }
+
+            .toggle {
+                font-size: 18px;
+            }
+
+            .left h2 {
+                font-size: 18px;
+            }
+
+            .temp {
+                font-size: 34px;
+            }
+
+            .icon {
+                font-size: 40px;
+            }
+
+            .card {
+                padding: 10px;
+            }
+
+            .day {
+                padding: 8px;
+            }
+
+            .forecast {
+                grid-template-columns: 1fr;
+            }
+
+            .search input {
+                padding: 10px;
+                font-size: 13px;
+            }
+
+            .search button {
+                padding: 10px;
+                font-size: 13px;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="header">
+            <h1>Weather Forecast</h1>
+            <div class="toggle" onclick="theme()">🌙</div>
+        </div>
+
+        <div class="search">
+            <input type="text" id="city" placeholder="Enter City">
+            <button onclick="searchWeather()">Search</button>
+        </div>
+
+        <div class="weather">
+
+            <div class="left">
+                <h2 id="cityName">Lucknow</h2>
+                <div class="temp" id="temp">31°C</div>
+                <p id="condition">☀ Sunny</p>
+            </div>
+
+            <div class="icon" id="icon">
+                ☀️
+            </div>
+
+        </div>
+
+        <div class="details">
+
+            <div class="card">
+                <h3>Humidity</h3>
+                <h2 id="humidity">62%</h2>
+            </div>
+
+            <div class="card">
+                <h3>Wind</h3>
+                <h2 id="wind">14 km/h</h2>
+            </div>
+
+            <div class="card">
+                <h3>Pressure</h3>
+                <h2 id="pressure">1013 hPa</h2>
+            </div>
+
+        </div>
+
+        <h2 style="margin-top:30px;">5-Day Forecast</h2>
+
+        <div class="forecast" id="forecast">
+
+            <div class="day">
+                <h3>Mon</h3>
+                <p>☀️</p>
+                <h4>31°C</h4>
+            </div>
+
+            <div class="day">
+                <h3>Tue</h3>
+                <p>🌦</p>
+                <h4>28°C</h4>
+            </div>
+
+            <div class="day">
+                <h3>Wed</h3>
+                <p>🌧</p>
+                <h4>26°C</h4>
+            </div>
+
+            <div class="day">
+                <h3>Thu</h3>
+                <p>⛅</p>
+                <h4>30°C</h4>
+            </div>
+
+            <div class="day">
+                <h3>Fri</h3>
+                <p>☀️</p>
+                <h4>33°C</h4>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+
+        function theme() {
+            document.body.classList.toggle("light");
+
+            document.querySelector(".toggle").innerHTML =
+                document.body.classList.contains("light") ? "☀" : "🌙";
+        }
+
+        function searchWeather() {
+
+            const city = document.getElementById("city").value;
+
+            if (city == "") {
+                alert("Enter city name");
+                return;
+            }
+
+            document.getElementById("cityName").innerHTML = city;
+
+            let temp = Math.floor(Math.random() * 15) + 22;
+            let humidity = Math.floor(Math.random() * 40) + 50;
+            let wind = Math.floor(Math.random() * 15) + 5;
+
+            let weather = [
+                ["Sunny", "☀️"],
+                ["Cloudy", "☁️"],
+                ["Rainy", "🌧"],
+                ["Storm", "⛈"],
+                ["Snow", "❄️"]
+            ];
+
+            let w = weather[Math.floor(Math.random() * weather.length)];
+
+            document.getElementById("temp").innerHTML = temp + "°C";
+            document.getElementById("condition").innerHTML = w[1] + " " + w[0];
+            document.getElementById("icon").innerHTML = w[1];
+            document.getElementById("humidity").innerHTML = humidity + "%";
+            document.getElementById("wind").innerHTML = wind + " km/h";
+            document.getElementById("pressure").innerHTML = (1000 + Math.floor(Math.random() * 30)) + " hPa";
+
+        }
+
+    </script>
+
+</body>
+
+</html>

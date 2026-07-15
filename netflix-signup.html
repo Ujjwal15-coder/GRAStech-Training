@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Netflix - Sign Up</title>
+    <link rel="stylesheet" href="netflix-signup.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background">
+        <div class="gradient-overlay"></div>
+    </div>
+    
+    <header class="header">
+        <a href="#" class="logo">
+            <svg viewBox="0 0 111 30" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" class="netflix-logo">
+                <path d="M105.062 14.28L111 30c-1.75-.25-3.499-.563-5.28-.845l-3.345-8.686-3.437 7.969c-1.687-.282-3.344-.376-5.031-.595l6.031-13.75L94.468 0h5.063l3.062 7.874L105.875 0h5.124l-5.937 14.28zM90.47 0h-4.594v27.25c1.5.094 3.062.156 4.594.343V0zm-8.563 26.937c-4.187-.281-8.375-.53-12.656-.625V0h4.687v21.875c2.688.062 5.375.281 7.969.405v4.657zM64.25 10.657v4.687h-6.406V26H53.22V0h13.125v4.687h-8.5v5.97h6.406zm-18.906-5.97V26.25c-1.563 0-3.156 0-4.688.062V4.687h-4.844V0h14.406v4.687h-4.874zM30.75 15.593c-2.062 0-4.5 0-6.25.095v6.968c2.75-.188 5.5-.406 8.281-.5v4.5c-2.969.281-6.062.562-9.062.625v-27.313c2.75-.094 5.531-.281 8.281-.375v4.5c-2.25.094-4.5.219-6.75.313v5.687c2.094-.031 4.281-.063 6.375-.094v5.594zM4.78 12.968v16.22C3.188 29.344 1.593 29.5 0 29.594V0h4.469l6.093 17.032V0h4.688v28.062c-1.656.282-3.344.375-5.125.625L4.78 12.968z" fill="#e50914"/>
+            </svg>
+        </a>
+    </header>
+
+    <main class="signup-container">
+        <div class="signup-box">
+            <h1>Sign Up</h1>
+            <form action="#">
+                <div class="input-group">
+                    <input type="email" id="email" required>
+                    <label for="email">Email or phone number</label>
+                </div>
+                <div class="input-group">
+                    <input type="password" id="password" required>
+                    <label for="password">Password</label>
+                </div>
+                <button type="submit" class="signup-btn">Sign Up</button>
+                <div class="form-help">
+                    <div class="remember-me">
+                        <input type="checkbox" id="remember" checked>
+                        <label for="remember">Remember me</label>
+                    </div>
+                    <a href="#" class="need-help">Need help?</a>
+                </div>
+            </form>
+            <div class="signup-footer">
+                <p class="already-have-account">Already have an account? <a href="#">Sign in now.</a></p>
+                <p class="recaptcha-terms">
+                    This page is protected by Google reCAPTCHA to ensure you're not a bot. <a href="#">Learn more.</a>
+                </p>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

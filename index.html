@@ -1,0 +1,650 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BBD NIIT Institute</title>
+  <style>
+    /* ===== Global Styles ===== */
+    :root {
+      --primary: #ff6347;
+      --bg-light: #f4f4f9;
+      --text-light: #333;
+      --bg-dark: #121212;
+      --text-dark: #eaeaea;
+      --card-dark: #1e1e1e;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      background: var(--bg-light);
+      color: var(--text-light);
+      overflow-x: hidden;
+      transition: background 0.5s, color 0.5s;
+    }
+
+    body.dark {
+      background: var(--bg-dark);
+      color: var(--text-dark);
+    }
+
+    header {
+      background: linear-gradient(135deg, #333, #555);
+      color: white;
+      text-align: center;
+      padding: 3rem 1rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      margin: 0;
+      animation: slideIn 1s ease forwards;
+    }
+
+    header p {
+      margin: 0.5rem 0 0;
+      opacity: 0;
+      animation: fadeIn 2s ease forwards 1s;
+    }
+
+    /* Navigation */
+    nav {
+      background: #444;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    nav ul {
+      display: flex;
+      justify-content: center;
+      margin: 0;
+      padding: 0.5rem;
+      list-style: none;
+    }
+
+    nav ul li {
+      margin: 0 1rem;
+      position: relative;
+    }
+
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: var(--primary);
+    }
+
+    /* Dark mode button */
+    .toggle-btn {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: var(--primary);
+      border: none;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+    .toggle-btn:hover {
+      transform: scale(1.1);
+    }
+
+    /* Sections */
+    section {
+      padding: 3rem 1rem;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeUp 1s forwards;
+    }
+
+    section:nth-of-type(odd) {
+      background: rgba(0,0,0,0.05);
+    }
+
+    body.dark section:nth-of-type(odd) {
+      background: var(--card-dark);
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: var(--primary);
+    }
+
+    /* Courses Grid */
+    .courses {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+
+    .course {
+      background: #fff;
+      border-radius: 12px;
+      padding: 1.5rem;
+      width: 280px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .course:hover {
+      transform: translateY(-10px) scale(1.03);
+      box-shadow: 0 12px 24px rgba(0,0,0,0.2);
+    }
+
+    body.dark .course {
+      background: var(--card-dark);
+    }
+
+    /* Gallery */<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BBD NIIT Institute</title>
+  <style>
+    /* ===== Root & Global ===== */
+    :root {
+      --primary: #00ffe5;
+      --secondary: #ff00c8;
+      --bg-dark: #0a0a0a;
+      --bg-light: #f5f5f5;
+      --text-dark: #eaeaea;
+      --text-light: #222;
+      --card-dark: #141414;
+      --card-light: #fff;
+    }
+
+    * {margin:0; padding:0; box-sizing:border-box;}
+
+    body {
+      font-family: "Poppins", sans-serif;
+      background: var(--bg-light);
+      color: var(--text-light);
+      transition: background 0.5s, color 0.5s;
+      overflow-x: hidden;
+    }
+
+    body.dark {
+      background: var(--bg-dark);
+      color: var(--text-dark);
+    }
+
+    
+    header {
+      text-align: center;
+      padding: 4rem 1rem;
+      background: linear-gradient(135deg, #111, #222);
+      color: var(--primary);
+      text-shadow: 0 0 10px var(--primary), 0 0 20px var(--secondary);
+      position: relative;
+      overflow: hidden;
+    }
+
+    header h1 {
+      font-size: 3.5rem;
+      animation: glowPulse 2s infinite alternate;
+    }
+
+    header p {
+      color: #fff;
+      margin-top: 1rem;
+      font-size: 1.2rem;
+      text-shadow: 0 0 5px var(--secondary);
+      animation: fadeIn 3s ease forwards;
+      opacity: 0;
+    }
+
+    /* Dark mode toggle */
+    .toggle-btn {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: var(--secondary);
+      color: white;
+      border: none;
+      padding: 0.5rem 1.2rem;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: transform 0.3s, box-shadow 0.3s;
+      box-shadow: 0 0 10px var(--secondary), 0 0 20px var(--secondary);
+    }
+    .toggle-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 20px var(--primary), 0 0 40px var(--secondary);
+    }
+
+    /* ===== Navigation ===== */
+    nav {
+      background: #111;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 0 20px rgba(0,255,229,0.3);
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      padding: 0.8rem;
+    }
+
+    nav ul li {
+      margin: 0 1.5rem;
+      position: relative;
+    }
+
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      letter-spacing: 1px;
+      transition: color 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: var(--primary);
+      text-shadow: 0 0 10px var(--primary);
+    }
+
+    /* ===== Sections ===== */
+    section {
+      padding: 4rem 2rem;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 1s, transform 1s;
+    }
+
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    h2 {
+      font-size: 2.2rem;
+      margin-bottom: 1.5rem;
+      color: var(--secondary);
+      text-shadow: 0 0 10px var(--secondary);
+    }
+
+    /* ===== Courses Grid ===== */
+    .courses {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+    }
+
+    .course {
+      background: var(--card-light);
+      color: var(--text-light);
+      padding: 2rem;
+      border-radius: 12px;
+      width: 280px;
+      transition: transform 0.4s, box-shadow 0.4s;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .course:hover {
+      transform: translateY(-15px) scale(1.05);
+      box-shadow: 0 0 20px var(--primary), 0 0 40px var(--secondary);
+    }
+
+    body.dark .course {
+      background: var(--card-dark);
+      color: var(--text-dark);
+    }
+
+    /* ===== Gallery ===== */
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+
+    .gallery img {
+      width: 300px;
+      border-radius: 12px;
+      transition: transform 0.4s, filter 0.4s;
+      box-shadow: 0 0 15px rgba(0,0,0,0.3);
+    }
+
+    .gallery img:hover {
+      transform: scale(1.08) rotate(2deg);
+      filter: brightness(1.2);
+      box-shadow: 0 0 25px var(--primary), 0 0 50px var(--secondary);
+    }
+
+    /* ===== Footer ===== */
+    footer {
+      background: #111;
+      color: white;
+      text-align: center;
+      padding: 1.5rem;
+      margin-top: 3rem;
+      text-shadow: 0 0 5px var(--primary);
+    }
+
+    /* ===== Animations ===== */
+    @keyframes glowPulse {
+      from {text-shadow: 0 0 10px var(--primary), 0 0 20px var(--secondary);}
+      to {text-shadow: 0 0 20px var(--primary), 0 0 40px var(--secondary);}
+    }
+
+    @keyframes fadeIn {
+      to {opacity: 1;}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>BBD NIIT Institute</h1>
+    <p>Excellence in Education</p>
+    <button class="toggle-btn" onclick="toggleDarkMode()">🌙 Dark</button>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#courses">Courses</a></li>
+      <li><a href="#faculty">Faculty</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+    </ul>
+  </nav>
+
+  <section id="home">
+    <h2>Home</h2>
+    <p>Discover a world of knowledge and opportunities at <b>BBD NIIT</b>. We prepare you for a successful career with cutting-edge education.</p>
+  </section>
+
+  <section id="about">
+    <h2>About Us</h2>
+    <p>For over 20 years, BBD NIIT has been a leader in education. Our mission is to nurture innovators and leaders for tomorrow.</p>
+  </section>
+
+  <section id="courses">
+    <h2>Courses</h2>
+    <div class="courses">
+      <div class="course">
+        <h3>Computer Science</h3>
+        <p>Learn coding, AI, cloud, and modern technologies.</p>
+      </div>
+      <div class="course">
+        <h3>Business Administration</h3>
+        <p>Gain leadership, finance, and management skills.</p>
+      </div>
+      <div class="course">
+        <h3>Engineering</h3>
+        <p>Explore mechanical, civil, and electrical engineering.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="faculty">
+    <h2>Faculty</h2>
+    <p>Our experienced faculty members are mentors who guide you towards success.</p>
+  </section>
+
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <p>Email: info@bbdniit.ac.in</p>
+    <p>Phone: +91 9900991234</p>
+    <p>Address: BBD Groups of Institute, Near Crown Mall, Lucknow</p>
+  </section>
+
+  <section id="gallery">
+    <h2>Gallery</h2>
+    <div class="gallery">
+      <img src="https://bbdniit.ac.in/wp-content/uploads/2019/07/bbdniit-1024x546.jpg" alt="Institute">
+      <img src="https://via.placeholder.com/300x200?text=Classroom" alt="Classroom">
+      <img src="https://via.placeholder.com/300x200?text=Laboratory" alt="Lab">
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 BBD NIIT Institute | All Rights Reserved</p>
+  </footer>
+
+  <script>
+    // Dark Mode Toggle
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark");
+      const btn = document.querySelector(".toggle-btn");
+      if (document.body.classList.contains("dark")) {
+        btn.textContent = "☀️ Light";
+      } else {
+        btn.textContent = "🌙 Dark";
+      }
+    }
+
+    // Scroll reveal effect
+    const sections = document.querySelectorAll("section");
+    const revealOnScroll = () => {
+      const triggerBottom = window.innerHeight * 0.8;
+      sections.forEach(sec => {
+        const top = sec.getBoundingClientRect().top;
+        if (top < triggerBottom) {
+          sec.classList.add("visible");
+        }
+      });
+    };
+    window.addEventListener("scroll", revealOnScroll);
+    window.addEventListener("load", revealOnScroll);
+  </script>
+</body>
+</html>
+
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .gallery img {
+      width: 300px;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      transition: transform 0.3s, filter 0.3s;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05) rotate(1deg);
+      filter: brightness(1.1);
+    }
+
+    /* Footer */
+    footer {
+      background: #222;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      margin-top: 2rem;
+    }
+
+    /* Animations */
+    @keyframes slideIn {
+      from {transform: translateX(-100%); opacity: 0;}
+      to {transform: translateX(0); opacity: 1;}
+    }
+
+    @keyframes fadeIn {
+      to {opacity: 1;}
+    }
+
+    @keyframes fadeUp {
+      to {opacity: 1; transform: translateY(0);}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>BBD NIIT Institute</h1>
+    <p>Excellence in Education</p>
+    <button class="toggle-btn" onclick="toggleDarkMode()">🌙 Dark</button>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About Us</a></li>
+      <li><a href="#courses">Courses</a></li>
+      <li><a href="#faculty">Faculty</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+    </ul>
+  </nav>
+
+  <section id="home">
+    <h2>Home</h2>
+    <p>Discover a world of knowledge and opportunities at <b>BBD NIIT</b>. We prepare you for a successful career with modern learning and innovation.</p>
+  </section>
+
+  <section id="about">
+    <h2>About Us</h2>
+    <p>For over 20 years, we’ve been a leader in education. Our mission is to provide quality education and inspire future leaders.</p>
+  </section>
+
+  <section id="courses">
+    <h2>Courses</h2>
+    <div class="courses">
+      <div class="course">
+        <h3>Computer Science</h3>
+        <p>Learn coding, AI, algorithms, and modern technologies.</p>
+      </div>
+      <div class="course">
+        <h3>Business Administration</h3>
+        <p>Gain leadership, finance, and management skills.</p>
+      </div>
+      <div class="course">
+        <h3>Engineering</h3>
+        <p>Explore mechanical, civil, and electrical engineering.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="faculty">
+    <h2>Faculty</h2>
+    <p>Our experienced faculty members are mentors dedicated to student success.</p>
+  </section>
+
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <p>Email: info@bbdniit.ac.in</p>
+    <p>Phone: +91 9900991234</p>
+    <p>Address: BBD Groups of Institute, Near Crown Mall, Lucknow</p>
+  </section>
+
+  <section id="gallery">
+    <h2>Gallery</h2>
+    <div class="gallery">
+      <img src="https://bbdniit.ac.in/wp-content/uploads/2019/07/bbdniit-1024x546.jpg" alt="Institute">
+      <img src="https://via.placeholder.com/300x200?text=Classroom" alt="Classroom">
+      <img src="https://via.placeholder.com/300x200?text=Laboratory" alt="Lab">
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 BBD NIIT Institute. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark");
+      const btn = document.querySelector(".toggle-btn");
+      if (document.body.classList.contains("dark")) {
+        btn.textContent = "☀️ Light";
+      } else {
+        btn.textContent = "🌙 Dark";
+      }
+    }
+  </script>
+</body>
+</html> 
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width= , initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="DOMpart2.css"/>
+</head>
+<body>
+    <div id="hello" name="Ujjwalji">This is all about div</div>
+    <p class="para">This is paragraph</p>
+</body>
+<script src="DOMpart2.js"></script>
+</html> -->
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="a">
+        Ujjwal
+    </h1>
+    <script>
+        let uj = document.getElementById("a")
+        uj.innerText="Ujjwal Lala";
+        uj.innerHTML="<i>Ujjwal</i>";
+        uj.style.color="blue";
+    </script>
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="firstbtn">First Button</button>
+    <button id="seconbtn">Second Button</button>
+
+    <script>
+        let firstbtn = document.getElementById("firstbtn")
+        let seconbtn = document.getElementById("seconbtn")
+        firstbtn.onclick = function () {
+            alert("you clicked first button")
+        }
+        seconbtn.onclick = function () {
+            firstbtn.onclick = function () {
+                // first button now does nothing
+            }
+            alert("you clicked second button");
+        }
+    </script>
+</body>
+
+
+</html>
