@@ -2,14 +2,16 @@ import { useState } from 'react'
 
 import './App.css'
 import Count from './components/Count'
+import Form from './components/Form'
 
 function App() {
-  const [count, setCount] = useState(0)
+  
 
   return (
     <>
 
-    <Count count={count} />
+    <Count/>
+    <Form/>
     
       
     </>
