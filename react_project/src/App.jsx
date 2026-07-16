@@ -10,6 +10,7 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import Form from './components/Form.jsx';
+import Count from './components/Count';
 
 
 
@@ -49,7 +50,7 @@ function App()  {
       <Header name={data.name} ></Header>
       <Content age = {data.age} passArray = {array}/>
       
-      <button onClick={() => setCount(count + 1)}>Increase</button>
+      <button onClick={() => setCount(count * 2)}>Increase</button>
       <button onClick={() => setCount(0)}>Reset</button>
       <h1>{count}</h1>
       <button onClick={bttnclick} className='btn btn-outline-secondary'>CLICK</button>
