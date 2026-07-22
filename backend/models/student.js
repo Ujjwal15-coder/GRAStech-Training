@@ -27,8 +27,16 @@ const studentSchema = new mongoose.Schema(
    skills:{
     type:String,
     required:true
+   },
+
+   timestamp:{
+    type:Date,
+    default:Date.now
    }
-})
+}
+
+   
+);
 
 const Student = mongoose.model("Student",studentSchema);
 export default Student;
