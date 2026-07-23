@@ -1,5 +1,6 @@
 import express from 'express';
-import {register,login} from '../controllers/studentController.js'
+import {register,login, getAllUsers,updateUser,deleteUser, findUserById} from '../controllers/studentController.js'
+import { verifyToken } from '../middleware/auth.js';
 
 const router = express.Router()
 
@@ -16,6 +17,11 @@ router.get('/teacher',(req,res) => {
 
 router.post('/register',register)
 router.post('/login',login)
+
+router.get('/getallusers',getAllUsers)
+router.put('/updateuser/:id',updateUser)
+router.delete('/deleteuser/:id',verifyToken,deleteUser)
+router.get('/finduserbyid/:id',findUserById)
 
 export default router
 

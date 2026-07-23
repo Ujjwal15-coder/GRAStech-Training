@@ -29,6 +29,13 @@ const studentSchema = new mongoose.Schema(
     required:true
    },
 
+   role:{
+    type:String,
+    default:"student",
+    required:true
+    
+   },
+
    timestamp:{
     type:Date,
     default:Date.now
