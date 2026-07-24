@@ -2,6 +2,7 @@ import Student from "../models/student.js";
 
 const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
 const passwordRegex = /^[A-Za-z\d@$!%*?&]{8,}$/;
+
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken'
 
@@ -12,72 +13,78 @@ export const register = async (req, res) => {
     // res.send("Registered Successfully");
 
     // console.log(req.body)
+    try {
+        const { name, email, password, courses, skills, role } = req.body // destructuring the data from req.body
+        if (!name) {
+            return res.status(400).json({
+                message: "Naam do"
+            })
+        }
+        if (!email) {
+            return res.status(400).json({
+                message: "email do"
+            })
+        }
+        if (!emailRegex.test(email)) {
+            return res.status(400).json({
+                message: "Please enter a valid email"
+            })
+        }
+        // now checking mail whether it is present in databse or not
+
+        const existEmail = await Student.findOne({ email: email }) //findOne() return an object if email found else return NULL
+        console.log(existEmail)
+
+        if (existEmail) {
+            return res.status(400).json({
+                message: "Email already exists"
+            })
+        }
+        if (!password) {
+            return res.status(400).json({
+                message: "Password Dena Bhool Gaye"
+            })
+        }
 
 
-    const { name, email, password, courses, skills, role } = req.body // destructuring the data from req.body
-    if (!name) {
-        return res.status(400).json({
-            message: "Naam do"
+        const hashedPassword = await bcrypt.hash(password, 10);
+        console.log(hashedPassword);
+
+        if (!passwordRegex.test(password)) {
+            return res.status(400).json({
+                message: "Please enter a valid password"
+            })
+        }
+        if (!courses) {
+            return res.status(400).json({
+                message: "Please enter courses"
+            })
+        }
+        if (!skills) {
+            return res.status(400).json({
+                message: "Please enter skills"
+            })
+        }
+        if (!role) {
+            role = "student"
+        }
+
+
+        const student = await Student.create({ name, email, password: hashedPassword, courses, skills, role }); //create() is a method of mongoose --> used to create a new document in the collection
+        // res.send(student)
+
+        res.status(200).json({
+            success: true,
+            message: "Student registered Successfully",
+            student: student
         })
     }
-    if (!email) {
-        return res.status(400).json({
-            message: "email do"
+    catch (error) {
+        return res.status(500).json({
+            success: false,
+            message: error.message
         })
     }
-    if (!emailRegex.test(email)) {
-        return res.status(400).json({
-            message: "Please enter a valid email"
-        })
-    }
-    // now checking mail whether it is present in databse or not
-
-    const existEmail = await Student.findOne({ email: email }) //findOne() return an object if email found else return NULL
-    console.log(existEmail)
-
-    if (existEmail) {
-        return res.status(400).json({
-            message: "Email already exists"
-        })
-    }
-    if (!password) {
-        return res.status(400).json({
-            message: "Password Dena Bhool Gaye"
-        })
-    }
-
-
-    const hashedPassword = await bcrypt.hash(password, 10);
-    console.log(hashedPassword);
-
-    if (!passwordRegex.test(password)) {
-        return res.status(400).json({
-            message: "Please enter a valid password"
-        })
-    }
-    if (!courses) {
-        return res.status(400).json({
-            message: "Please enter courses"
-        })
-    }
-    if (!skills) {
-        return res.status(400).json({
-            message: "Please enter skills"
-        })
-    }
-    if(!role){
-        role = "student"
-    }
-
-
-    const student = await Student.create(req.body);
-    // res.send(student)
-
-    res.status(200).json({
-        success: true,
-        message: "Student registered Successfully",
-        student: student
-    })
 }
 
 export const login = async (req, res) => {
@@ -109,7 +116,7 @@ export const login = async (req, res) => {
             })
         }
 
-        let token = jwt.sign({ email: email, existUser: _id }, "this is  SECRET KEY", { expiresIn: "2D" })
+        let token = jwt.sign({ email: email, existUser: existEmail._id }, "this is  SECRET KEY", { expiresIn: "2D" }) //jwt.sign() --> used to create a new token --> first parameter is the payload --> second parameter is the secret key --> third parameter is the options --> expiresIn is the time for which the token will be valid
 
         return res.status(200).json({
             succes: true,
@@ -155,8 +162,8 @@ export const getAllUsers = async (req, res) => {
 export const updateUser = async (req, res) => {
     try {
         // console.log(req.params)
-        const { id } = req.params
-        const students = await Student.findByIdAndUpdate(id, req.body, { new: true })
+        const { id } = req.params //req.params is used to get the parameters from the URL
+        const students = await Student.findByIdAndUpdate(id, req.body, { new: true }) //findByIdAndUpdate() --> used to update the document in the collection --> first parameter is the id --> second parameter is the data to be updated --> third parameter is the options --> new: true means return the updated document
 
         console.log(students)
         if (!students) {

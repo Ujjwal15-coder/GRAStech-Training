@@ -13,7 +13,7 @@ export const verifyToken=(req,res,next) => {
         }
         let authtoken=token.split(' ')[1] //return only string after "Beaer" 
 
-        const decodeToken=jwt.verify(authtoken,"this is SECRET KEY")
+        const decodeToken=jwt.verify(authtoken,"this is  SECRET KEY")
 
         req.user = decodeToken;
         
