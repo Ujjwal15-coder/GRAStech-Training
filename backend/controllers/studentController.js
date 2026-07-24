@@ -192,8 +192,14 @@ export const deleteUser = async (req, res) => {
     try {
         console.log(req.user)
         const { id } = req.params
+        const validId = await Student.findById(id);
+        if(!validId){
+            return res.status(404).json({
+                success:false,
+                message:"No User found with this id"
+            })
+        }
         const students = await Student.findByIdAndDelete(id);
-
         if (!students) {
             return res.status(404).json({
                 success: false,

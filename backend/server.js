@@ -1,7 +1,7 @@
 import express from 'express';
 import studentRoutes from './routes/studentRoutes.js';
 import { connectDB } from './config/db.js'
-
+import companyRoutes from './routes/companyRoutes.js'
 import dotenv from 'dotenv'
 dotenv.config()
 
@@ -13,6 +13,7 @@ app.use(express.json())
 const PORT = process.env.PORT || 5000;
 
 app.use('/students',studentRoutes) //application level middleware
+app.use('/companies',companyRoutes)
 
 app.get('/',(req,res) => {
     res.send("Hello World")

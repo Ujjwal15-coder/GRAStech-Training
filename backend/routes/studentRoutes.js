@@ -1,6 +1,7 @@
 import express from 'express';
 import {register,login, getAllUsers,updateUser,deleteUser, findUserById} from '../controllers/studentController.js'
 import { verifyToken } from '../middleware/auth.js';
+import { isAdmin } from '../middleware/isAdmin.js';
 
 const router = express.Router()
 
